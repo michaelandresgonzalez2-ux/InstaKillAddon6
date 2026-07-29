@@ -1,11 +1,11 @@
 pluginManagement {
     repositories {
-        maven("https://maven.fabricmc.net/")
         gradlePluginPortal()
-        google()
+        maven("https://maven.fabricmc.net/")
+        maven("https://maven.meteordev.org/releases")
+        maven("https://maven.meteordev.org/snapshots")
     }
 }
-
 
 plugins {
     id("org.gradle.toolchains.foojay-resolver-convention") version "1.0.0"
