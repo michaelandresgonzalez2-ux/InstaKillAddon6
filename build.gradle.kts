@@ -67,11 +67,10 @@ tasks {
     }
 
     withType<JavaCompile>().configureEach {
-        options.compilerArgs.addAll(
-            listOf(
-                "-Xlint:deprecation",
-                "-Xlint:unchecked"
-            )
+    options.compilerArgs.addAll(
+        listOf(
+            "-Xlint:deprecation",
+            "-Xlint:unchecked"
         )
-    }
+    )
 }
