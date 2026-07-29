@@ -1,7 +1,8 @@
 plugins {
-    id("net.fabricmc.fabric-loom") version "1.6-SNAPSHOT"
+    id("net.fabricmc.fabric-loom") version "1.6.0"
     `maven-publish`
 }
+
  
 base {
     archivesName = properties["archives_base_name"] as String
