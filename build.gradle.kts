@@ -1,6 +1,7 @@
 plugins {
-    alias(libs.plugins.fabric.loom)
+    id("net.fabricmc.fabric-loom") version "1.6.8"
 }
+
 
 base {
     archivesName = properties["archives_base_name"] as String
