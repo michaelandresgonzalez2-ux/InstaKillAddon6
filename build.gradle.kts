@@ -1,79 +1,23 @@
 plugins {
-    id("net.fabricmc.fabric-loom") version "1.6.0"
+    id("fabric-loom") version "1.4-SNAPSHOT"
     `maven-publish`
 }
 
- 
 base {
-    archivesName = properties["archives_base_name"] as String
-    version = libs.versions.mod.version.get()
-    group = properties["maven_group"] as String
+    archivesName.set("InstaKillAddon")
+    group = "com.example"
+    version = "1.0.0"
 }
 
 repositories {
-    maven {
-        name = "meteor-maven"
-        url = uri("https://maven.meteordev.org/releases")
-    }
-    maven {
-        name = "meteor-maven-snapshots"
-        url = uri("https://maven.meteordev.org/snapshots")
-    }
+    maven("https://maven.meteordev.org/releases")
+    maven("https://maven.meteordev.org/snapshots")
 }
 
 dependencies {
-    // Fabric
-    minecraft(libs.minecraft)
-    implementation(libs.fabric.loader)
-
-    // Meteor
-    implementation(libs.meteor.client)
-}
-
-java {
-    toolchain {
-        languageVersion.set(JavaLanguageVersion.of(libs.versions.jdk.get().toInt()))
-    }
-}
-
-fun toMinecraftCompat(version: String): String {
-    val match = Regex("""^(\d{2})\.([1-9]\d*)?(?:\.([1-9]\d*))?$""")
-        .matchEntire(version)
-        ?: error("Invalid Minecraft version format: $version. Expected YY.D or YY.D.H")
-
-    val (year, drop, _) = match.destructured
-    return "$year.$drop"
-}
-
-tasks {
-    processResources {
-        val propertyMap = mapOf(
-            "version" to project.version,
-            "minecraft_version" to "1.21.11",
-            "jdk_version" to libs.versions.jdk.get(),
-        )
-
-        inputs.properties(propertyMap)
-        filesMatching("fabric.mod.json") {
-            expand(propertyMap)
-        }
-    }
-
-    jar {
-        inputs.property("archivesName", project.base.archivesName.get())
-
-        from("LICENSE") {
-            rename { "${it}_${inputs.properties["archivesName"]}" }
-        }
-    }
-
-    withType<JavaCompile>().configureEach {
-        options.compilerArgs.addAll(
-            listOf(
-                "-Xlint:deprecation",
-                "-Xlint:unchecked"
-            )
-        )
-    }
+    minecraft("com.mojang:minecraft:1.21.4") // O la versión que uses
+    mappings("net.fabricmc:yarn:1.21.4+build.1:v2")
+    modImplementation("net.fabricmc:fabric-loader:0.15.7")
+    modImplementation("meteordevelopment:meteor-client:1.21.4")
 }
 
