@@ -1,5 +1,5 @@
 plugins {
-    id("fabric-loom") version "1.4-SNAPSHOT"
+    id("fabric-loom") version "1.6-0"
     `maven-publish`
 }
 
@@ -15,9 +15,14 @@ repositories {
 }
 
 dependencies {
-    minecraft("com.mojang:minecraft:1.21.4") // O la versión que uses
+    minecraft("com.mojang:minecraft:1.21.4")
     mappings("net.fabricmc:yarn:1.21.4+build.1:v2")
     modImplementation("net.fabricmc:fabric-loader:0.15.7")
     modImplementation("meteordevelopment:meteor-client:1.21.4")
 }
 
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(21))
+    }
+}
