@@ -1,6 +1,6 @@
 plugins {
     id("net.fabricmc.fabric-loom") version "1.7.4"
-
+}
 
 base {
     archivesName = properties["archives_base_name"] as String
@@ -35,12 +35,12 @@ java {
 }
 
 fun toMinecraftCompat(version: String): String {
-    val match = Regex("""^(\d{2})\.([1-9]\d*)(?:\.([1-9]\d*))?$""")
+    val match = Regex("""^(\d{2})\.([1-9]\d*)?(?:\.([1-9]\d*))?$""")
         .matchEntire(version)
         ?: error("Invalid Minecraft version format: $version. Expected YY.D or YY.D.H")
 
     val (year, drop, _) = match.destructured
-    return "~$year.$drop"
+    return "$year.$drop"
 }
 
 tasks {
@@ -48,7 +48,6 @@ tasks {
         val propertyMap = mapOf(
             "version" to project.version,
             "minecraft_version" to "1.21.11",
-
             "jdk_version" to libs.versions.jdk.get(),
         )
 
@@ -67,10 +66,12 @@ tasks {
     }
 
     withType<JavaCompile>().configureEach {
-    options.compilerArgs.addAll(
-        listOf(
-            "-Xlint:deprecation",
-            "-Xlint:unchecked"
+        options.compilerArgs.addAll(
+            listOf(
+                "-Xlint:deprecation",
+                "-Xlint:unchecked"
+            )
         )
-    )
+    }
 }
+
