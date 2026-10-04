@@ -1,25 +1,17 @@
 {
   "schemaVersion": 1,
-  "id": "addon-template",
-  "version": "${version}",
-  "name": "Addon Template",
-  "description": "An addon template for Meteor Client addons.",
-  "authors": [
-    "seasnail"
-  ],
-  "contact": {
-    "sources": "https://github.com/MeteorDevelopment/meteor-addon-template"
-  },
+  "id": "instakill-addon",
+  "version": "1.0.0",
+  "name": "InstaKillAddon",
+  "description": "InstaKill con mazo, ultra totem y ultra teleport para Meteor Client.",
+  "authors": [],
   "icon": "assets/template/icon.png",
   "environment": "client",
   "entrypoints": {
     "meteor": [
-      "com.example.addon.AddonTemplate"
+      "com.example.addon.InstaKillAddon"
     ]
   },
-  "mixins": [
-    "addon-template.mixins.json"
-  ],
   "custom": {
     "meteor-client:color": "225,25,25",
     "modmenu": {
@@ -29,8 +21,9 @@
     }
   },
   "depends": {
-    "java": ">=${jdk_version}",
-    "minecraft": "${minecraft_version}",
+    "java": ">=21",
+    "fabricloader": ">=0.15.7",
+    "minecraft": "1.21.4",
     "meteor-client": "*"
   }
 }

@@ -1,5 +1,6 @@
 plugins {
-    id("net.fabricmc.fabric-loom") version "1.6.0"
+    id("fabric-loom") version "1.9.2"
+    java
     `maven-publish`
 }
 
@@ -16,9 +17,9 @@ repositories {
 
 dependencies {
     minecraft("com.mojang:minecraft:1.21.4")
-    mappings("net.fabricmc:yarn:1.21.4+build.1:v2")
+    mappings("net.fabricmc:yarn:1.21.4+build.8:v2")
     modImplementation("net.fabricmc:fabric-loader:0.15.7")
-    modImplementation("meteordevelopment:meteor-client:1.21.4")
+    modImplementation("meteordevelopment:meteor-client:1.21.4-SNAPSHOT")
 }
 
 java {

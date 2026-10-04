@@ -1,10 +1,10 @@
 package com.example.addon.modules;
 
-import meteordevelopment.meteorClient.systems.modules.Module;
-import meteordevelopment.meteorClient.events.world.TickEvent;
-import meteordevelopment.meteorClient.settings.Setting;
-import meteordevelopment.meteorClient.settings.SettingGroup;
-import meteordevelopment.meteorClient.settings.IntSetting;
+import meteordevelopment.meteorclient.systems.modules.Module;
+import meteordevelopment.meteorclient.events.world.TickEvent;
+import meteordevelopment.meteorclient.settings.Setting;
+import meteordevelopment.meteorclient.settings.SettingGroup;
+import meteordevelopment.meteorclient.settings.IntSetting;
 import meteordevelopment.orbit.EventHandler;
 import net.minecraft.entity.player.PlayerEntity;
 import com.example.addon.InstaKillAddon;
